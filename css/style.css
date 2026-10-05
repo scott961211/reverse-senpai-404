@@ -36,6 +36,18 @@ header{
     object-fit: contain;
 }
 
+.menu-button{
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
 nav{
     display: flex;
     gap: 30px;
@@ -210,6 +222,46 @@ nav a.active{
         font-size: 16px;
     }
 
+    header{
+        padding: 0 20px;
+    }
+
+    .menu-button{
+        display: block;
+
+        margin-left: auto;
+    }
+
+    nav{
+        position: absolute;
+
+        top: 80xp;
+        left: 0;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 0;
+
+        background-color: #181818;
+    }
+
+    nav.open{
+        display: flex;
+    }
+
+    nav a.active{
+        border-bottom: 1px solid #333;
+
+        background-color: #333;
+    }
 }
 
 .news-button:hover{

@@ -119,3 +119,27 @@ if(newsList && prevButton && nextButton){
     });
 
 }
+
+const menuButton = document.getElementById("menu-button");
+
+const mainNov = document.getElementById("main-nav");
+
+if(menuButton && mainNov){
+
+    menuButton.addEventListener("click", function(){
+
+        mainNov.classList.toggle("open");
+
+        if(mainNov.classList.contains("open")){
+
+            menuButton.textContent = "✕"
+
+        }else{
+
+            menuButton.textContent = "☰"
+            
+        }
+
+    });
+
+}
