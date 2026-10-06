@@ -119,6 +119,9 @@ if(newsList && prevButton && nextButton){
     });
 
 }
+//----------------------------------------------
+//漢堡選單
+//----------------------------------------------
 
 const menuButton = document.getElementById("menu-button");
 
