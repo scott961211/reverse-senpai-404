@@ -374,6 +374,127 @@ footer{
     animation: scrollMove 1.5s infinite;
 }
 
+/*==================================================
+ABOUT區
+==================================================*/
+
+.about-page{
+    padding-top: 80px;
+
+    background-color: #151515;
+}
+
+.about-hero{
+    padding: 80px 50px 100px;
+
+    text-align: center;
+}
+
+.about-main-image{
+    width: min(1000px, 100%);
+    aspect-ratio: 16 / 9;
+
+    margin:  50px auto 0;
+
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    background-color: #333;
+
+    border: 2px dashed #777;
+
+    color: #aaa;
+}
+
+.about-intor{
+    max-width: 800xp;
+
+    margin: 50px auto 0;
+}
+
+.about-intor h2{
+    font-size: 32px;
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+.about-intor p{
+    color: #bbb;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+.features{
+    padding: 100px 50px;
+
+    background-color: #202020;
+}
+
+.feature{
+    max-width: 1100px;
+
+    margin:  0 auto 120px;
+
+    display:  flex;
+    align-items: center;
+
+    gap: 70px;
+}
+
+.feature:last-child{
+    margin-bottom: 0;
+}
+
+.feature.reverse{
+    flex-direction: row-reverse;
+}
+
+.feature-image{
+    width: 55%;
+    aspect-ratio: 16 / 9;
+
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    background-color: #333;
+
+    border: 2px dashed #777;
+
+    color: #aaa;
+}
+
+.feature-text{
+    flex: 1;
+}
+
+.feature-text span{
+    color: #888;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+}
+
+.feature-text h2{
+    margin: 0;
+
+    color: #bbb;
+
+    line-height: 1.8;
+}
+
 /*=================================================
 動畫
 =================================================*/
@@ -604,5 +725,41 @@ footer{
         color: white;
 
         text-align: left;
+    }
+
+    .about-hero{
+        padding: 60px 20px 70px;
+    }
+
+    .about-intor{
+        margin-top: 30px;
+    }
+
+    .about-intor h2{
+        font-size: 24px;
+    }
+
+    .features{
+        padding: 70px 20px;
+    }
+
+    .feature,.feature.reverse{
+        flex-direction: column;
+
+        gap: 30px;
+
+        margin-bottom: 80px;
+    }
+
+    .feature-image{
+        width: 100%;
+    }
+
+    .feature-text{
+        width: 100%;
+    }
+
+    .feature-text h2{
+        font-size: 26xp;
     }
 }
