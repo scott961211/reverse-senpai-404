@@ -146,3 +146,25 @@ if(menuButton && mainNov){
     });
 
 }
+
+//--------------------------------------------------
+//動畫
+//--------------------------------------------------
+const scrollHint = document.getElementById("scroll-hint");
+const heroGradient = document.getElementById("hero-gradient");
+
+if(scrollHint && heroGradient){
+
+    window.addEventListener("scroll",function(){
+
+        const scrollY = window.scrollY;
+
+        let opacity = 1 - scrollY/300;
+
+        opacity = Math.max(0,Math.min(1,opacity));
+
+        scrollHint.style.opacity = opacity;
+        heroGradient.style.opacity = opacity;
+    });
+
+}

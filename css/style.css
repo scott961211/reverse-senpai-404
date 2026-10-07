@@ -102,6 +102,52 @@ nav a.active{
     align-items: center;
 
     text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero-gradient{
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    
+    height: 50%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(50,50,50,0),
+        rgba(50,50,50,0.4)35%,
+        rgba(50,50,50,0.8)70%,
+        rgba(50,50,50,1)100%
+    );
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-hint{
+    text-align: center;
+
+    z-index: 2;
+}
+
+.scroll-hint p{
+    margin: 0;
+}
+
+.scroll-hint span{
+    display: block;
+    margin-top: 10px;
 }
 
 .hero-image{
@@ -446,6 +492,29 @@ ABOUT區
     align-items: center;
 
     gap: 70px;
+
+    position: relative;
+}
+
+.feature-number{
+    position: absolute;
+
+    top: -70px;
+    right: 0;
+
+    font-size: 130px;
+    font-weight: bold;
+
+    color: rgba(255,255,255,0.05);
+
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+.feature.feature.reverse .feature-number{
+    right: auto;
+    left: 0;
 }
 
 .feature:last-child{
@@ -499,14 +568,14 @@ ABOUT區
 動畫
 =================================================*/
 
-@keyframes scrollMove {
+@keyframes scrollDown {
     
     0%{
         transform: translateY(0);
     }
 
     50%{
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
 
     100%{
