@@ -624,7 +624,11 @@ ABOUT區
 .character-stage .character-item {
     transition:
         transform 0.65s ease-in-out,
-        opacity 0.65s ease;
+        opacity 0.65s ease !important;
+}
+
+.character-stage .character-item.no-transition{
+    transition: none !important;
 }
 
 .character-item.selected{
@@ -676,7 +680,7 @@ ABOUT區
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(3,minmax(0, 1fr));
+    grid-template-columns: repeat(4,minmax(0, 1fr));
     gap: 30px;
 }
 

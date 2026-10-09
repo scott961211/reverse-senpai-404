@@ -198,7 +198,6 @@ const characterDescription = document.getElementById("character-description");
 if(characterStage && characterPrev && characterNext){
 
     let selectedIndex = 0;
-    let previousIndex = 0;
 
     const characterElements = [];
 
