@@ -185,15 +185,7 @@ const characters = [
     {
         name: "主角C",
         description: "主角C介紹"
-    },
-    {
-        name: "主角D",
-        description: "主角D介紹"
-    },
-    {
-        name: "主角E",
-        description: "主角E介紹"
-    },
+    }
 ];
 
 const characterStage = document.getElementById("character-stage");
@@ -206,6 +198,7 @@ const characterDescription = document.getElementById("character-description");
 if(characterStage && characterPrev && characterNext){
 
     let selectedIndex = 0;
+    let previousIndex = 0;
 
     const characterElements = [];
 
@@ -244,8 +237,8 @@ if(characterStage && characterPrev && characterNext){
 
             const angle = offset * 30 * Math.PI / 180;
 
-            const radiusX = Math.min(characterStage.clientWidth * 0.4, 350);
-            const radiusY = 65;
+            const radiusX = Math.min(characterStage.clientWidth * 0.6, 600);
+            const radiusY = -65;
 
             const x = Math.sin(angle) * radiusX;
             const y = (1 - Math.cos(angle) * radiusY);

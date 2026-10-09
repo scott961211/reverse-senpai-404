@@ -617,11 +617,14 @@ ABOUT區
 
     color: white;
 
-    transition: 
-        transition 0.5s ease,
-        opacity 0.5s ease;
-
+    will-change: transform, opacity;
     cursor: pointer;
+}
+
+.character-stage .character-item {
+    transition:
+        transform 0.65s ease-in-out,
+        opacity 0.65s ease;
 }
 
 .character-item.selected{
