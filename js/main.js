@@ -168,3 +168,125 @@ if(scrollHint && heroGradient){
     });
 
 }
+
+//---------------------------------------------
+//角色轉盤
+//---------------------------------------------
+
+const characters = [
+    {
+        name: "主角A",
+        description: "主角A介紹"
+    },
+    {
+        name: "主角B",
+        description: "主角B介紹"
+    },
+    {
+        name: "主角C",
+        description: "主角C介紹"
+    },
+    {
+        name: "主角D",
+        description: "主角D介紹"
+    },
+    {
+        name: "主角E",
+        description: "主角E介紹"
+    },
+];
+
+const characterStage = document.getElementById("character-stage");
+const characterPrev = document.getElementById("character-prev");
+const characterNext = document.getElementById("character-next");
+
+const characterName = document.getElementById("character-name");
+const characterDescription = document.getElementById("character-description");
+
+if(characterStage && characterPrev && characterNext){
+
+    let selectedIndex = 0;
+
+    const characterElements = [];
+
+    characters.forEach(function(character,index){
+
+        const item = document.createElement("div");
+
+        item.className = "character-item";
+        item.textContent = character.name;
+
+        item.addEventListener("click", function(){
+            selectedIndex = index;
+            updateCharacters();
+        });
+
+        characterStage.appendChild(item);
+        characterElements.push(item);
+
+    });
+
+    function updateCharacters(){
+
+        const total = characters.length;
+
+        characterElements.forEach(function(item, index){
+
+            let offset = index - selectedIndex;
+
+            if(offset > total / 2){
+                offset -= total;
+            }
+
+            if(offset < -total / 2){
+                offset += total;
+            }
+
+            const angle = offset * 30 * Math.PI / 180;
+
+            const radiusX = Math.min(characterStage.clientWidth * 0.4, 350);
+            const radiusY = 65;
+
+            const x = Math.sin(angle) * radiusX;
+            const y = (1 - Math.cos(angle) * radiusY);
+
+            const scale = Math.max(0.55, 1 - Math.abs(offset) * 0.18);
+            const opacity = Math.max(0.3, 1 - Math.abs(offset) * 0.25);
+
+            item.style.transform =
+                `translate(${x}px, ${-y}px) scale(${scale})`;
+
+            item.style.opacity = opacity;
+
+            item.style.zIndex = 100 - Math.abs(offset);
+
+            item.classList.toggle("selected", offset === 0);
+
+        });
+
+        characterName.textContent = characters[selectedIndex].name;
+
+        characterDescription.textContent = characters[selectedIndex].description;
+
+    }
+
+    characterPrev.addEventListener("click", function(){
+
+        selectedIndex = (selectedIndex - 1 + characters.length) % characters.length;
+
+        updateCharacters();
+
+    });
+
+    characterNext.addEventListener("click",function(){
+
+        selectedIndex = (selectedIndex + 1) % characters.length;
+
+        updateCharacters();
+
+    });
+
+    window.addEventListener("resize", updateCharacters);
+
+    updateCharacters();
+}
