@@ -175,8 +175,8 @@ if(scrollHint && heroGradient){
 
 const characters = [
     {
-        name: "主角A",
-        description: "主角A介紹"
+        name: "青",
+        description: "身高:160cm\n生日:2006/05/28\n生日花:紫鳶尾花\n花語:智慧、尊貴、靈性\n代表物:眼鏡\n代表色:紫色\n#反差#敏感#依賴#傲嬌"
     },
     {
         name: "主角B",

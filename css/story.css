@@ -1,5 +1,5 @@
 /* 僅作用於世界觀頁面，保留網站共用導覽、頁尾與手機選單。 */
-body.world-body { background: #111214; color: #eee; }
+body.world-body { background: #141113; color: #eee; }
 .world-page { --world-muted: #b2b3b8; --world-line: #44464d; font-family: "Microsoft JhengHei", sans-serif; }
 .world-page *, .world-page *::before, .world-page *::after { box-sizing: border-box; }
 .world-page h1, .world-page h2, .world-page p { margin: 0; }
