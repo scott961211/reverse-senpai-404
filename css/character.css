@@ -1,0 +1,143 @@
+/*=================================================
+角色
+=================================================*/
+
+.character-page{
+    padding-top: 80px;
+    background: #151515;
+}
+
+.main-charaters{
+    padding: 80px 20px 100px;
+    text-align: center;
+}
+
+.character-carousel{
+    max-width: 1100px;
+    margin: 40px auto 0;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.character-stage{
+    position: relative;
+    flex: 1;
+    min-width: 0;
+
+    height: 440px;
+    overflow: visible;
+}
+
+.character-item{
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+
+    width: 150px;
+    height: 240px;
+
+    margin-left: -75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #444;
+    border: 2px dashed #888;
+    box-sizing: border-box;
+    border-radius: 12px;
+
+    color: white;
+
+    will-change: transform, opacity;
+    cursor: pointer;
+}
+
+.character-stage .character-item {
+    transition:
+        transform 0.65s ease-in-out,
+        opacity 0.65s ease !important;
+}
+
+.character-stage .character-item.no-transition{
+    transition: none !important;
+}
+
+.character-item.selected{
+    border-color: white;
+    background: #666;
+}
+
+.character-button{
+    flex-shrink: 0;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #333;
+    color: white;
+
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.character-button:hover{
+    background: #555;
+}
+
+.character-info{
+    max-width: 700px;
+    margin: 25px auto 0;
+}
+
+.character-info h2{
+    font-size: 32px;
+}
+
+.character-info p{
+    color: #bbb;
+    line-height: 1.8;
+
+    white-space: pre-line;
+}
+
+.side-characters{
+    padding: 90px 40px;
+    background: #202020;
+}
+
+.side-characters-list{
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0, 1fr));
+    gap: 30px;
+}
+
+.side-characters-card{
+    padding: 15px;
+    background: #303030;
+    border-radius: 10px;
+    text-align: center;
+
+    transition: transform 0.3s ease;
+}
+
+.side-characters-card:hover{
+    transform: translateY(-8px);
+}
+
+.side-characters-image{
+    height: 260px;
+    align-items: center;
+    justify-content: center;
+
+    background: #444;
+    border: 2px dashed #777;
+}

@@ -1,0 +1,313 @@
+/*================================================
+主圖片
+================================================*/
+
+.hero{
+    min-height: 100vh;
+
+    padding-top: 80px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero-gradient{
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    
+    height: 50%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(50,50,50,0),
+        rgba(50,50,50,0.4)35%,
+        rgba(50,50,50,0.8)70%,
+        rgba(50,50,50,1)100%
+    );
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-hint{
+    text-align: center;
+
+    z-index: 2;
+}
+
+.scroll-hint p{
+    margin: 0;
+}
+
+.scroll-hint span{
+    display: block;
+    margin-top: 10px;
+}
+
+.hero-image{
+    width: min(1000px,80%);
+    height: 500px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #333;
+
+    border: 2px dashed #777;
+
+    box-sizing: border-box;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hero h1{
+    font-size: 42px;
+}
+
+/*==================================================
+公告區域
+==================================================*/
+
+.news {
+    padding: 100px 50px;
+
+    background-color: #151515;
+}
+
+.section-title{
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.section-title h1{
+    margin: 0;
+
+    font-size: 50px;
+}
+
+.section-title p{
+    font-size: 40px;
+
+    margin-top: 8px;
+
+    color: #999;
+}
+
+.news-carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-window{
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.news-list{
+    display:  flex;
+    gap: 30px;
+    width: 100%;
+
+    transform: translateX(0);
+
+    transition: transfrom 0.4s ease;
+}
+
+.news-card{
+    flex: 0 0 calc((100% - 60px) / 3);
+}
+
+.news-button{
+    flex-shrink: 0;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #333;
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.news-button:hover{
+    background-color:   #555;
+
+    transform: scale(1.1);
+}
+
+.image-placeholder{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    color: #aaa;
+}
+
+.image-placeholder img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    object-position: left bottom;
+}
+
+.image-placeholder video{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    object-position: left bottom;
+}
+
+.news-card h3{
+    margin-top: 15px;
+    margin-bottom: 5px;
+
+    font-size: 20px;
+}
+
+.news-date{
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+/*================================================
+下載區域
+================================================*/
+
+.download{
+    padding: 100px 50px;
+
+    background-color: #202020;
+}
+
+.download-list{
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.download-card{
+    width: 350px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    background-color: #333;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid #555;
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.download-card:hover{
+    transform: translateY(-5px);
+
+    background-color: #444;
+}
+
+.download-icon{
+    width: 80px;
+    height: 80px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #222;
+
+    border: 2px dashed #777;
+
+    color: #aaa;
+}
+
+.download-icon img{
+    width: 100%;
+    height: 100%;
+}
+
+.download-info h3{
+    margin: 0;
+
+    font-size: 24px;
+}
+
+.download-info p{
+    margin: 8px 0 0;
+
+    color: #aaa;
+}
+
+.web_demo{
+    width: 100%;
+    height: 100%;
+
+    background-color: red;
+}
