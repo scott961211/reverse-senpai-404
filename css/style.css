@@ -191,13 +191,15 @@ nav a.active{
     margin-bottom: 50px;
 }
 
-.section-title h2{
+.section-title h1{
     margin: 0;
 
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .section-title p{
+    font-size: 40px;
+
     margin-top: 8px;
 
     color: #999;
@@ -275,6 +277,14 @@ nav a.active{
 }
 
 .image-placeholder img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    object-position: left bottom;
+}
+
+.image-placeholder video{
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -465,8 +475,6 @@ ABOUT區
 
     background-color: #333;
 
-    border: 2px dashed #777;
-
     color: #aaa;
 }
 
@@ -482,7 +490,7 @@ ABOUT區
 }
 
 .about-intor h2{
-    font-size: 32px;
+    font-size: 50px;
 
     margin-bottom: 20px;
 
@@ -494,7 +502,7 @@ ABOUT區
 
     line-height: 1.8;
 
-    font-size: 17px;
+    font-size: 28px;
 }
 
 .features{
@@ -519,7 +527,7 @@ ABOUT區
 .feature-number{
     position: absolute;
 
-    top: -70px;
+    top: -90px;
     right: 0;
 
     font-size: 130px;
@@ -576,12 +584,14 @@ ABOUT區
 .feature-text span{
     color: #888;
 
-    font-size: 14px;
+    font-size: 30px;
 
     letter-spacing: 3px;
 }
 
 .feature-text h2{
+    font-size: 26px;
+
     margin: 0;
 
     color: #bbb;
@@ -590,6 +600,8 @@ ABOUT區
 }
 
 .feature-text h3{
+    font-size: 20px;
+
     color: #bbb;
 }
 
