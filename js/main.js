@@ -131,17 +131,14 @@ if(menuButton && mainNov){
 
     menuButton.addEventListener("click", function(){
 
-        mainNov.classList.toggle("open");
+        const isOpen = mainNov.classList.toggle("open");
 
-        if(mainNov.classList.contains("open")){
-
-            menuButton.textContent = "✕"
-
-        }else{
-
-            menuButton.textContent = "☰"
-            
-        }
+        menuButton.textContent = isOpen ? "✕" : "☰";
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen ? "關閉選單" : "開啟選單"
+        );
 
     });
 

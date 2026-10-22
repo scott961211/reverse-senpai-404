@@ -27,7 +27,11 @@
             </div>
 
             <!--漢堡選單按鈕-->
-            <button class="menu-button" id="menu-button">
+            <button class="menu-button" id="menu-button"
+                    type="button"
+                    aria-label="開啟選單"
+                    aria-expanded="false"
+                    aria-controls="main-nav">
                 ☰
             </button>
 
@@ -80,7 +84,7 @@
                 <div class="news-carousel">
 
                     <!--左按鈕-->
-                    <button class="news-button" id="news-prev">
+                    <button class="news-button" id="news-prev" type="button" aria-label="上一則公告">
                         ◀
                     </button>
 
@@ -172,7 +176,7 @@
                         </div>
                     </div>
 
-                    <button class="news-button" id="news-next">
+                    <button class="news-button" id="news-next" type="button" aria-label="下一則公告">
                         ▶
                     </button>
 

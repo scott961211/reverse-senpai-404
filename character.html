@@ -23,7 +23,11 @@
                 </a>
             </div>
 
-            <button class="menu-button" id="menu-button">
+            <button class="menu-button" id="menu-button"
+                    type="button"
+                    aria-label="開啟選單"
+                    aria-expanded="false"
+                    aria-controls="main-nav">
                 ☰
             </button>
 
@@ -48,7 +52,7 @@
                 
                 <div class="character-carousel">
 
-                    <button id="character-prev" class="character-button">
+                    <button id="character-prev" class="character-button" type="button" aria-label="上一位角色">
                         ❮
                     </button>
 
@@ -56,7 +60,7 @@
                         <!--js自動-->
                     </div>
 
-                    <button id="character-next" class="character-button">
+                    <button id="character-next" class="character-button" type="button" aria-label="下一位角色">
                         ❯
                     </button>
 
