@@ -37,7 +37,7 @@ ABOUT區
 }
 
 .about-intor{
-    max-width: 800xp;
+    max-width: 800px;
 
     margin: 50px auto 0;
 }
@@ -156,4 +156,44 @@ ABOUT區
     font-size: 20px;
 
     color: #bbb;
+}
+
+@media (max-width: 600px){
+
+    .about-hero{
+        padding: 60px 20px 70px;
+    }
+
+    .about-intor{
+        margin-top: 30px;
+    }
+
+    .about-intor h2{
+        font-size: 24px;
+    }
+
+    .features{
+        padding: 70px 20px;
+    }
+
+    .feature,.feature.reverse{
+        flex-direction: column;
+
+        gap: 30px;
+
+        margin-bottom: 80px;
+    }
+
+    .feature-image{
+        width: 100%;
+    }
+
+    .feature-text{
+        width: 100%;
+    }
+
+    .feature-text h2{
+        font-size: 26px;
+    }
+
 }

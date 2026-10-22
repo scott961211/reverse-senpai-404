@@ -176,14 +176,17 @@ if(scrollHint && heroGradient){
 const characters = [
     {
         name: "青",
+        image: "images/character/c.webp",
         description: "身高:160cm\n生日:2006/05/28\n生日花:紫鳶尾花\n花語:智慧、尊貴、靈性\n代表物:眼鏡\n代表色:紫色\n#反差#敏感#依賴#傲嬌"
     },
     {
         name: "棠",
+        image: "images/character/t.webp",
         description: "身高:175cm\n生日:2005/03/25\n生日花:貼梗海棠\n花語:溫和、美麗、快樂\n代表物:西裝\n代表色:藍色\n#反差#浪漫#獨立#溫和"
     },
     {
         name: "心魔",
+        image: "images/character/h.webp",
         description: "身高:?\n生日:?\n生日花:?\n花語:?、?、?\n代表物:?\n代表色:?\n#?#?#?#?"
     }
 ];
@@ -206,7 +209,11 @@ if(characterStage && characterPrev && characterNext){
         const item = document.createElement("div");
 
         item.className = "character-item";
-        item.textContent = character.name;
+        const img = document.createElement("img");
+        img.src = character.image;
+        img.alt = `${character.name}角色立繪`;
+        img.draggable = false;
+        item.appendChild(img);
 
         item.addEventListener("click", function(){
             selectedIndex = index;
@@ -242,7 +249,7 @@ if(characterStage && characterPrev && characterNext){
             const x = Math.sin(angle) * radiusX;
             const y = (1 - Math.cos(angle) * radiusY);
 
-            const scale = Math.max(0.55, 1 - Math.abs(offset) * 0.18);
+            const scale = Math.max(0.45, 0.85 - Math.abs(offset) * 0.25);
             const opacity = Math.max(0.3, 1 - Math.abs(offset) * 0.25);
 
             item.style.transform =

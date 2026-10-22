@@ -154,35 +154,7 @@ footer{
 寬度適配
 ==================================================*/
 
-@media(max-width: 900px){
-
-    .news-card{
-        flex-basis: calc((100% - 30px) / 2);
-    }
-
-}
-
 @media (max-width: 600px){
-
-    .news{
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .news-carousel{
-        gap: 10px;
-    }
-
-    .news-card{
-        flex-basis: 100%;
-    }
-
-    .news-button{
-        width: 40px;
-        height: 40px;
-
-        font-size: 16px;
-    }
 
     header{
         height: 80px;
@@ -249,7 +221,7 @@ footer{
     nav{
         position: fixed;
 
-        top: 80xp;
+        top: 80px;
         left: 0;
         right: 0;
 
@@ -297,21 +269,6 @@ footer{
         border-bottom: 1px solid #444;
 
         background-color: #333;
-    }
-
-    .download{
-        padding: 70px 20px;
-    }
-
-    .download-list{
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-    .download-card{
-        width: 100%;
-        max-width: 350px;
     }
 
     nav#main-nav{
@@ -362,74 +319,4 @@ footer{
 
         text-align: left;
     }
-
-    .about-hero{
-        padding: 60px 20px 70px;
-    }
-
-    .about-intor{
-        margin-top: 30px;
-    }
-
-    .about-intor h2{
-        font-size: 24px;
-    }
-
-    .features{
-        padding: 70px 20px;
-    }
-
-    .feature,.feature.reverse{
-        flex-direction: column;
-
-        gap: 30px;
-
-        margin-bottom: 80px;
-    }
-
-    .feature-image{
-        width: 100%;
-    }
-
-    .feature-text{
-        width: 100%;
-    }
-
-    .feature-text h2{
-        font-size: 26xp;
-    }
-
-    .character-stage{
-        height: 340px;
-    }
-
-    .character-item{
-        width: 110px;
-        height: 180px;
-        margin-left: -55px;
-    }
-
-    .character-carousel{
-        gap: 8px;
-    }
-
-    .character-button{
-        width: 36px;
-        height: 36px;
-        font-size: 18px;
-    }
-    
-    .side-characters{
-        padding: 70px 20px;
-    }
-
-    .side-characters-list{
-        grid-template-columns: repeat(2,minmax(0,1fr));
-        gap: 15px;
-    }
-
-    .side-characters-image{
-        height: 170px;
-    }
-    
 }
