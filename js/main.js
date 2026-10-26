@@ -17,6 +17,7 @@ navLink.forEach(function(link){
     if(linkPage === currentPage){
 
         link.classList.add("active");
+        link.setAttribute("aria-current", "page");
 
     }
 });
@@ -30,94 +31,41 @@ const newsList = document.querySelector(".news-list");
 const prevButton = document.getElementById("news-prev");
 const nextButton = document.getElementById("news-next");
 
-if(newsList && prevButton && nextButton){
-
-    let isMoving = false;
-
-    function getMoveDistance(){
-
-        const firstCard = newsList.firstElementChild;
-        const cardWidth = firstCard.getBoundingClientRect().width;
-        const listStyle = window.getComputedStyle(newsList);
-        const gap = parseFloat(listStyle.gap) || 0;
-
-        return cardWidth + gap;
-    }
-
-    nextButton.addEventListener("click",function(){
-
-        if(isMoving){
-            return;
-        }
-
-        isMoving = true;
-
-        const moveDistance = getMoveDistance();
-
-        newsList.style.transition = "transform 0.4s ease";
-
-        newsList.style.transform = `translateX(-${moveDistance}px)`;
-
-    });
-
-    newsList.addEventListener("transitionend",function(){
-
-        if(newsList.style.transform.includes("-")){
-
-            const firstCard = newsList.firstElementChild;
-
-            newsList.appendChild(firstCard);
-         
-            newsList.style.transition = "none";
-
-            newsList.style.transform = "translateX(0)";
-
-            isMoving = false;
-        }
-    });
-
-    prevButton.addEventListener("click",function(){
-
-        if(isMoving){
-            return;
-        }
-
-        isMoving = true;
-
-        const lastCard = newsList.lastElementChild;
-
-        newsList.style.transition = "none";
-
-        newsList.prepend(lastCard);
-
-        const moveDistance = getMoveDistance();
-
-        newsList.style.transform = `translateX(-${moveDistance}px)`;
-
-        newsList.offsetHeight;
-
-        newsList.style.transition = "transform 0.4s ease";
-
-        newsList.style.transform = "translateX(0)";
-
-        function previousFinished(){
-
-            isMoving = false;
-
-            newsList.removeEventListener(
-                "transitionend",
-                previousFinished
-            );
-
-        }
-
-        newsList.addEventListener(
-            "transitionend",
-            previousFinished
-        );
-
-    });
-
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (newsList && prevButton && nextButton) {
+ let moving = false, direction = 0, fallback;
+ const finish = () => {
+  if (!moving) return;
+  clearTimeout(fallback);
+  if (direction === 1) newsList.append(newsList.firstElementChild);
+  newsList.style.transition = 'none';
+  newsList.style.transform = 'translateX(0)';
+  moving = false;
+ };
+ const move = (step) => {
+  if (moving || newsList.children.length < 2) return;
+  if (motionPreference.matches) {
+   if (step === 1) newsList.append(newsList.firstElementChild);
+   else newsList.prepend(newsList.lastElementChild);
+   return;
+  }
+  moving = true; direction = step;
+  const distance = newsList.firstElementChild.getBoundingClientRect().width + (parseFloat(getComputedStyle(newsList).gap) || 0);
+  newsList.style.transition = 'none';
+  if (step === -1) {
+   newsList.prepend(newsList.lastElementChild);
+   newsList.style.transform = 'translateX(-' + distance + 'px)';
+  }
+  void newsList.offsetWidth;
+  newsList.style.transition = 'transform .4s ease';
+  newsList.style.transform = step === 1 ? 'translateX(-' + distance + 'px)' : 'translateX(0)';
+  fallback = setTimeout(finish, 500);
+ };
+ nextButton.addEventListener('click', () => move(1));
+ prevButton.addEventListener('click', () => move(-1));
+ newsList.addEventListener('transitionend', event => { if (event.target === newsList && event.propertyName === 'transform') finish(); });
+ window.addEventListener('resize', finish);
+ motionPreference.addEventListener('change', finish);
 }
 //----------------------------------------------
 //漢堡選單
@@ -127,23 +75,22 @@ const menuButton = document.getElementById("menu-button");
 
 const mainNov = document.getElementById("main-nav");
 
-if(menuButton && mainNov){
-
-    menuButton.addEventListener("click", function(){
-
-        const isOpen = mainNov.classList.toggle("open");
-
-        menuButton.textContent = isOpen ? "✕" : "☰";
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute(
-            "aria-label",
-            isOpen ? "關閉選單" : "開啟選單"
-        );
-
-    });
-
+if (menuButton && mainNov) {
+ const setOpen = open => {
+  mainNov.classList.toggle('open', open);
+  menuButton.textContent = open ? '✕' : '☰';
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+ };
+ menuButton.addEventListener('click', () => setOpen(!mainNov.classList.contains('open')));
+ document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && mainNov.classList.contains('open')) { setOpen(false); menuButton.focus(); }
+ });
+ document.addEventListener('click', event => { if (!mainNov.contains(event.target) && !menuButton.contains(event.target)) setOpen(false); });
+ mainNov.addEventListener('click', event => { if (event.target.closest('a')) setOpen(false); });
+ const mobile = window.matchMedia('(max-width: 700px)');
+ mobile.addEventListener('change', () => { if (mainNov.contains(document.activeElement)) menuButton.focus(); setOpen(false); });
 }
-
 //--------------------------------------------------
 //動畫
 //--------------------------------------------------
@@ -161,7 +108,7 @@ if(scrollHint && heroGradient){
         opacity = Math.max(0,Math.min(1,opacity));
 
         scrollHint.style.opacity = opacity;
-        heroGradient.style.opacity = opacity;
+        
     });
 
 }
@@ -184,7 +131,7 @@ const characters = [
     {
         name: "心魔",
         image: "images/character/h.webp",
-        description: "身高:?\n生日:?\n生日花:?\n花語:?、?、?\n代表物:?\n代表色:?\n#?#?#?#?"
+        description: "身分:未明\n身高:尚未公開\n生日:尚未公開\n生日花:尚未公開\n代表物:尚未公開\n代表色:尚未公開\n#身分未明#資料未公開"
     }
 ];
 
@@ -203,9 +150,12 @@ if(characterStage && characterPrev && characterNext){
 
     characters.forEach(function(character,index){
 
-        const item = document.createElement("div");
+        const item = document.createElement("button");
 
         item.className = "character-item";
+        item.type = "button";
+        item.setAttribute("aria-label", `查看${character.name}的角色介紹`);
+        item.setAttribute("aria-controls", "character-name character-description");
         const img = document.createElement("img");
         img.src = character.image;
         img.alt = `${character.name}角色立繪`;
@@ -257,6 +207,7 @@ if(characterStage && characterPrev && characterNext){
             item.style.zIndex = 100 - Math.abs(offset);
 
             item.classList.toggle("selected", offset === 0);
+            item.setAttribute("aria-pressed", String(offset === 0));
 
         });
 
@@ -286,3 +237,17 @@ if(characterStage && characterPrev && characterNext){
 
     updateCharacters();
 }
+// Start media only when requested; reduced-motion users see a paused frame.
+document.querySelectorAll('.news-card video').forEach(video => {
+ const button = document.createElement('button');
+ button.type = 'button'; button.className = 'media-toggle'; button.textContent = '播放動畫';
+ button.setAttribute('aria-label', '播放棠的角色動畫');
+ video.closest('.image-placeholder').after(button);
+ const sync = () => { button.textContent = video.paused ? '播放動畫' : '暫停動畫'; button.setAttribute('aria-label', (video.paused ? '播放' : '暫停') + '棠的角色動畫'); };
+ button.addEventListener('click', async () => {
+  if (!video.paused) video.pause();
+  else { try { await video.play(); } catch { button.textContent = '無法播放，請重試'; } }
+ });
+ video.addEventListener('play', sync); video.addEventListener('pause', sync);
+ motionPreference.addEventListener('change', () => { if (motionPreference.matches) video.pause(); });
+});

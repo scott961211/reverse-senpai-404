@@ -6,23 +6,51 @@
     const count = document.getElementById("world-dialogue-count");
     const next = document.getElementById("world-dialogue-next");
     const restart = document.getElementById("world-dialogue-restart");
+    const stage = document.querySelector(".world-scene-stage");
+    const content = document.getElementById("world-scene-content");
+    const finale = document.getElementById("world-scene-finale");
+    const replay = document.getElementById("world-scene-replay");
     if (!text || !speaker || !accessible || !count || !next || !restart) return;
 
-    // 節錄初遇劇情；Discord 表情代碼不直接顯示於官網。
+    // 原文節錄自 404demo，至青說「不了。」結束。
     const lines = [
-        { speaker: "旁白", text: "被室友拖進酒吧的青，在吧台前坐了下來。" },
-        { speaker: "青", text: "蜂蜜酒。" },
-        { speaker: "棠", text: "弟弟，這裡是酒吧，你未滿十八不能喝……" },
-        { speaker: "旁白", text: "青沒有說話，只是遞出了身分證。" },
-        { speaker: "棠", text: "沒有啦……我開玩笑的啦……對不起。" },
-        { speaker: "癒", text: "笑死，沒事啦，他已經習慣了。" },
-        { speaker: "青", text: "……" },
-        { speaker: "旁白", text: "如果青知道這杯酒會換來多少黑歷史，他大概會直接回宿舍。可惜，現在的他還不知道。" }
+        {
+            "speaker": "青",
+            "text": "我先走了。"
+        },
+        {
+            "speaker": "棠",
+            "text": "不洗個澡再走嗎。你這幅樣子⋯⋯。"
+        },
+        {
+            "speaker": "青",
+            "text": "再見。"
+        },
+        {
+            "speaker": "棠",
+            "text": "額⋯⋯加個聯絡方式⋯⋯？"
+        },
+        {
+            "speaker": "青",
+            "text": "不了。"
+        }
     ];
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let index = 0;
     let timer = null;
     let typing = false;
+    let endingTimer = null;
+
+    function showEnding() {
+        if (!stage || !content || !finale) return;
+        const moveFocus = content.contains(document.activeElement);
+        finale.hidden = false;
+        // Commit the initial opacity before starting the fade.
+        void finale.offsetWidth;
+        stage.classList.add("is-complete");
+        content.inert = true;
+        if (moveFocus) finale.querySelector("a").focus({ preventScroll: true });
+    }
 
     function finish() {
         clearInterval(timer);
@@ -31,10 +59,16 @@
         text.textContent = lines[index].text;
         next.textContent = index === lines.length - 1 ? "閱讀完畢" : "繼續 ▸";
         next.disabled = index === lines.length - 1;
+        clearTimeout(endingTimer);
+        if (index === lines.length - 1) endingTimer = setTimeout(showEnding, 1200);
     }
 
     function render() {
         clearInterval(timer);
+        clearTimeout(endingTimer);
+        if (stage) stage.classList.remove("is-complete");
+        if (content) content.inert = false;
+        if (finale) finale.hidden = true;
         const line = lines[index];
         speaker.textContent = line.speaker;
         accessible.textContent = `${line.speaker}：${line.text}`;
@@ -58,8 +92,13 @@
         if (index < lines.length - 1) { index++; render(); }
     });
     restart.addEventListener("click", () => { index = 0; render(); });
+    if (replay) replay.addEventListener("click", () => {
+        index = 0;
+        render();
+        next.focus({ preventScroll: true });
+    });
     reducedMotion.addEventListener("change", () => { if (reducedMotion.matches && typing) finish(); });
-    window.addEventListener("pagehide", () => clearInterval(timer));
+    window.addEventListener("pagehide", () => { clearInterval(timer); clearTimeout(endingTimer); });
     window.addEventListener("pageshow", event => { if (event.persisted) finish(); });
     next.hidden = false;
     restart.hidden = false;

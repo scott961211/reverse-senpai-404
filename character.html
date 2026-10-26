@@ -13,13 +13,14 @@
     </head>
 
     <body>
+        <a class="skip-link" href="#main-content">跳至主要內容</a>
         
         <!--上方導覽列 -->
         <header>
             <!--logo-->
             <div class="logo">
                 <a href="index.html">
-                    <img src="./images/logo.jpg" alt="logo">
+                    <img src="./images/logo.jpg" alt="長得像學妹的學弟和長得像學長的學姐 首頁">
                 </a>
             </div>
 
@@ -31,7 +32,7 @@
                 ☰
             </button>
 
-            <nav id="main-nav">
+            <nav id="main-nav" aria-label="主要導覽">
                 <a href="index.html">首頁</a>
                 <a href="about.html">介紹</a>
                 <a href="story.html">世界觀</a>
@@ -41,7 +42,7 @@
         </header>
 
         <!--主要區域-->
-        <main class="character-page">
+        <main id="main-content" tabindex="-1" class="character-page">
 
             <section class="main-charaters">
 
@@ -58,6 +59,7 @@
 
                     <div class="character-stage" id="character-stage">
                         <!--js自動-->
+                        <noscript>請啟用 JavaScript 查看角色立繪與介紹。</noscript>
                     </div>
 
                     <button id="character-next" class="character-button" type="button" aria-label="下一位角色">
@@ -66,9 +68,12 @@
 
                 </div>
 
-                <div class="character-info">
+                <div class="character-info" aria-live="polite" aria-atomic="true">
+                    <span class="character-eyebrow" aria-hidden="true">CHARACTER PROFILE</span>
                     <h2 id="character-name"></h2>
                     <p id="character-description"></p>
+                    <dl class="character-facts" id="character-facts" aria-hidden="true"></dl>
+                    <div class="character-tags" id="character-tags" aria-hidden="true"></div>
                 </div>
 
             </section>
@@ -137,13 +142,13 @@
 
             <div class="social-links">
 
-                <a href="https://discord.gg/ztVHWFdPF4" target="_blank">
-                    <img src="./images/dc_logo.png">
+                <a href="https://discord.gg/ztVHWFdPF4" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/dc_logo.png" alt="Discord" width="50" height="50" loading="lazy">
                     <br>
                     dc
                 </a>
-                <a href="https://www.instagram.com/reverse_senpai404?stkn=MWNvcHlrZG5kcXJsaA%3D%3D&utm_source=qr" target="_blank">
-                    <img src="./images/ig_logo.png">
+                <a href="https://www.instagram.com/reverse_senpai404?stkn=MWNvcHlrZG5kcXJsaA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/ig_logo.png" alt="Instagram" width="50" height="50" loading="lazy">
                     <br>
                     ig
                 </a>
@@ -155,6 +160,7 @@
         </footer>
 
         <script src="js/main.js"></script>
+        <script src="js/character.js"></script>
         
     </body>
 

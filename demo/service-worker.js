@@ -1,4 +1,4 @@
-var cacheName = 'reversesenpai404';
+var cacheName = '404demo';
 
 /* Start the service worker and cache all of the app's content or use the existing one */
 self.addEventListener('install', function (e) {

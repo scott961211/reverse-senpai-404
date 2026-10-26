@@ -13,6 +13,7 @@
     </head>
 
     <body>
+        <a class="skip-link" href="#main-content">跳至主要內容</a>
         
         <!--上方導覽列 -->
         <header>
@@ -20,7 +21,7 @@
             <!--logo-->
             <div class="logo">
                 <a href="index.html">
-                    <img src="./images/logo.jpg" alt="logo">
+                    <img src="./images/logo.jpg" alt="長得像學妹的學弟和長得像學長的學姐 首頁">
                 </a>
             </div>
 
@@ -32,7 +33,7 @@
                 ☰
             </button>
 
-            <nav id="main-nav">
+            <nav id="main-nav" aria-label="主要導覽">
                 <a href="index.html">首頁</a>
                 <a href="about.html">介紹</a>
                 <a href="story.html">世界觀</a>
@@ -41,7 +42,7 @@
 
         </header>
 
-        <main class="about-page">
+        <main id="main-content" tabindex="-1" class="about-page">
 
             <!--標題-->
             <section class="about-hero">
@@ -53,24 +54,27 @@
 
                 <!--主畫面-->
                 <div class="about-main-image">
-                    <img src="./images/about/game.png">
+                    <img src="./images/about/game-preview.webp" alt="遊戲畫面預覽" decoding="async">
                 </div>
 
                 <div class="about-intor">
+                    <p class="about-kicker">一場誤會，一段意想不到的日常。</p>
                     <h2>長得像學妹的學弟和長得像學長的學姐</h2>
 
                     <p>
-                        《長得像學妹的學弟和長得像學長的學姐》<br>
-                        是一款結合角色互動與小遊戲的 2D 視覺小說。<br>
-                        透過生動的對話與畫面演出，走進角色們的日常生活，<br>
+                        《長得像學妹的學弟和長得像學長的學姐》
+                        是一款結合角色互動與小遊戲的 2D 視覺小說。
+                        透過生動的對話與畫面演出，走進角色們的日常生活，
                         並在故事中的特定時刻親自參與互動，體驗一段充滿意外與趣味的校園故事。
                     </p>
+                    <div class="about-genres"><span>2D 視覺小說</span><span>角色互動</span><span>互動小遊戲</span></div>
+                    <a class="about-explore" href="#game-features">探索遊戲特色 <span aria-hidden="true">↓</span></a>
                 </div>
 
             </section>
 
             <!--特色-->
-            <section class="features">
+            <section class="features" id="game-features">
 
                 <!--特色1-->
                 <div class="feature">
@@ -78,7 +82,7 @@
                     <div class="feature-number">01</div>
 
                     <div class="feature-image">
-                        畫面1
+                        <img src="./images/about/feature-story.webp" alt="青與棠的劇情對話畫面" loading="lazy" decoding="async">
                     </div>
 
                     <div class="feature-text">
@@ -86,7 +90,7 @@
 
                         <h2>劇情體驗</h2>
                         <h3>在對話之間，走進他們的故事</h3>
-                        <p>以視覺小說的形式展開故事，透過角色之間的對話、表情與畫面演出，逐步帶領玩家認識每一位角色。隨著劇情推進，平凡的日常也將逐漸展現出不同的面貌。跟隨角色們的腳步，體驗一段充滿反差與意外的校園故事。文字預留</p>
+                        <p>以視覺小說的形式展開故事，透過角色之間的對話、表情與畫面演出，逐步帶領玩家認識每一位角色。隨著劇情推進，平凡的日常也將逐漸展現出不同的面貌。跟隨角色們的腳步，體驗一段充滿反差與意外的校園故事。</p>
                     </div>
 
                 </div>
@@ -97,13 +101,13 @@
                     <div class="feature-number">02</div>
 
                     <div class="feature-image">
-                        <img src="./images/about/2026-10-15 150820.png">
+                        <img src="./images/about/feature-minigame.webp" alt="互動小遊戲畫面" loading="lazy" decoding="async">
                     </div>
 
                     <div class="feature-text">
                         <span>FEATURE 02</span>
 
-                        <h2>互動小遊戲.</h2>
+                        <h2>互動小遊戲</h2>
                         <h3>不只是閱讀，更要親自參與</h3>
                         <p>除了閱讀劇情，遊戲還將在特定情節中加入互動小遊戲，讓玩家不再只是故事的旁觀者。透過簡單直覺的操作完成挑戰，在不同的互動環節中感受劇情的節奏變化，為視覺小說增添更多參與感與趣味性。</p>
                     </div>
@@ -119,13 +123,13 @@
 
             <div class="social-links">
 
-                <a href="https://discord.gg/ztVHWFdPF4" target="_blank">
-                    <img src="./images/dc_logo.png">
+                <a href="https://discord.gg/ztVHWFdPF4" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/dc_logo.png" alt="Discord" width="50" height="50" loading="lazy">
                     <br>
                     dc
                 </a>
-                <a href="https://www.instagram.com/reverse_senpai404?stkn=MWNvcHlrZG5kcXJsaA%3D%3D&utm_source=qr" target="_blank">
-                    <img src="./images/ig_logo.png">
+                <a href="https://www.instagram.com/reverse_senpai404?stkn=MWNvcHlrZG5kcXJsaA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/ig_logo.png" alt="Instagram" width="50" height="50" loading="lazy">
                     <br>
                     ig
                 </a>

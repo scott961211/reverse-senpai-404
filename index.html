@@ -16,13 +16,14 @@
     </head>
 
     <body>
+        <a class="skip-link" href="#main-content">跳至主要內容</a>
         
         <!--上方導覽列 -->
         <header>
             <!--logo-->
             <div class="logo">
                 <a href="index.html">
-                    <img src="./images/logo.jpg" alt="logo">
+                    <img src="./images/logo.jpg" alt="長得像學妹的學弟和長得像學長的學姐 首頁">
                 </a>
             </div>
 
@@ -36,7 +37,7 @@
             </button>
 
             <!--選單內容-->
-            <nav id="main-nav">
+            <nav id="main-nav" aria-label="主要導覽">
                 <a href="index.html">首頁</a>
                 <a href="about.html">介紹</a>
                 <a href="story.html">世界觀</a>
@@ -46,14 +47,21 @@
         </header>
 
         <!--首頁-->
-        <main>
+        <main id="main-content" tabindex="-1">
 
             <!--主要顯示區(第一印象)-->
             <section class="hero">
 
                 <div class="hero-image">
-                    <img src="./images/home/hero-img.png" alt="主圖片">
+                    <img src="./images/home/hero-img.png" alt="遊戲主視覺" fetchpriority="high">
                 </div>
+
+                <div class="hero-gradient" id="hero-gradient">
+                    <div class="scroll-hint" id="scroll-hint">
+                        <p>下滑查看更多</p>
+                        <span>V</span>
+                    </div>
+                </div>                
 
                 <h1>
                     長得像學妹的學弟<br>
@@ -63,12 +71,6 @@
                 <p>一場認錯身分的相遇，展開意想不到的校園日常。</p>
                 <a href="./demo/index.html" class="hero-play">立即試玩</a>
 
-                <div class="hero-gradient" id="hero-gradient">
-                    <div class="scroll-hint" id="scroll-hint">
-                        <p>下滑查看更多</p>
-                        <span>V</span>
-                    </div>
-                </div>                
 
             </section>
 
@@ -98,7 +100,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <video autoplay muted loop playsinline>
+                                    <video muted loop playsinline preload="none" poster="images/character/t.webp" aria-label="角色棠的遊戲內動畫">
                                         <source src="images/home/GIF.webm" type="video/webm">
                                     </video>
                                 </div>
@@ -112,7 +114,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <img src="./images/home/IMG_8204.png" alt="公告圖片4">
+                                    <img src="./images/home/IMG_8204.png" alt="青的角色立繪與人設" loading="lazy" decoding="async">
                                 </div>
 
                                 <h3>角色「青」立繪及人設完成</h3>
@@ -124,7 +126,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <img src="./images/home/20261013_2.png" alt="公告圖片4">
+                                    <img src="./images/home/20261013_2.png" alt="棠的角色立繪優化" loading="lazy" decoding="async">
                                 </div>
 
                                 <h3>角色「棠」立繪優化</h3>
@@ -138,7 +140,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <img src="./images/home/202610021.jpg" alt="公告圖片1">                               
+                                    <img src="./images/home/202610021.jpg" alt="棠的配音確認公告" loading="lazy" decoding="async">                               
                                 </div>
 
                                 <h3>角色「棠」CV已經確認</h3>
@@ -151,7 +153,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <img src="./images/home/t.png" alt="公告圖片2">
+                                    <img src="./images/home/t.png" alt="棠的角色立繪與人設" loading="lazy" decoding="async">
                                 </div>
 
                                 <h3>角色「棠」立繪及人設完成</h3>
@@ -164,7 +166,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <img src="./images/home/news-test02.jpg" alt="公告圖片3">
+                                    <img src="./images/home/news-test02.jpg" alt="心魔概念圖" loading="lazy" decoding="async">
                                 </div>
 
                                 <h3>「心魔」概念圖完成</h3>
@@ -188,10 +190,10 @@
             <section class="download">
 
                 <!--下載內容-->
-                <div class="section-list">
+                <div class="download-list">
 
                 <!--
-                    <a class="download-card" href="#" target="_blank">
+                    <a class="download-card" href="#" target="_blank" rel="noopener noreferrer">
 
                         <div class="download-icon">
                             <img src="./images/home/pc_logo.png">
@@ -204,7 +206,7 @@
 
                     </a>
 
-                    <a class="download-card" href="#" target="_blank">
+                    <a class="download-card" href="#" target="_blank" rel="noopener noreferrer">
 
                         <div class="download-icon">
                             <img src="./images/home/steam-logo.webp">
@@ -218,10 +220,11 @@
                     </a>
                 -->
 
-                    <a class="download-card" href="./demo/index.html" target="_blank">
+                    <a class="download-card" href="./demo/index.html" target="_blank" rel="noopener noreferrer">
                         <div class="web_demo">
-                            web demo<br>
-                            這是真的能點進去的demo!!!
+                            <strong>瀏覽器試玩</strong><br>
+                            首次載入需下載遊戲資料，請稍候。<br>
+                            於新分頁開啟
                         </div>
                     </a>
 
@@ -237,13 +240,13 @@
             <!--社群-->
             <div class="social-links">
 
-                <a href="https://discord.gg/ztVHWFdPF4" target="_blank">
-                    <img src="./images/dc_logo.png">
+                <a href="https://discord.gg/ztVHWFdPF4" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/dc_logo.png" alt="Discord" width="50" height="50" loading="lazy">
                     <br>
                     dc
                 </a>
-                <a href="https://www.instagram.com/reverse_senpai404?stkn=MWNvcHlrZG5kcXJsaA%3D%3D&utm_source=qr" target="_blank">
-                    <img src="./images/ig_logo.png">
+                <a href="https://www.instagram.com/reverse_senpai404?stkn=MWNvcHlrZG5kcXJsaA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/ig_logo.png" alt="Instagram" width="50" height="50" loading="lazy">
                     <br>
                     ig
                 </a>
