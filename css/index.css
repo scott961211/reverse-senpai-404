@@ -23,7 +23,23 @@
     overflow: hidden;
 }
 
-.hero-gradient { position: static; width: 100%; flex: none; margin-top: 12px; color: #bbb; }
+/*==================================================
+主視覺下方提示
+提示保留在正常排版中，圖片會讓出空間，避免首次載入看不到提示。
+==================================================*/
+
+.hero-gradient{
+    position: static;
+    width: 100%;
+    flex: none;
+    margin-top: 12px;
+    color: #bbb;
+}
+
+/*==================================================
+下滑查看更多
+紫色圓角入口可點擊到最新消息，箭頭使用 scrollDown 動畫。
+==================================================*/
 
 .scroll-hint{
     display: inline-flex;
@@ -62,11 +78,17 @@
     animation: scrollDown 1.5s infinite;
 }
 
-.scroll-hint:hover { background: linear-gradient(120deg, #896192, #684570); box-shadow: 0 6px 28px #bc85d04d; }
-#home-news { scroll-margin-top: 80px; }
+.scroll-hint:hover{
+    background: linear-gradient(120deg, #896192, #684570);
+    box-shadow: 0 6px 28px #bc85d04d;
+}
+
+#home-news{
+    scroll-margin-top: 80px;
+}
 
 .hero-image{
-    width: min(800px,80%);
+    width: min(800px, 80%);
     flex: 1 1 400px;
     min-height: 0;
     height: 0;
@@ -75,12 +97,10 @@
     justify-content: center;
     align-items: center;
 
-
-
     box-sizing: border-box;
 }
 
-.hero-image img {
+.hero-image img{
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -93,7 +113,12 @@
     padding-inline: 16px;
 }
 
-.hero-play {
+/*==================================================
+試玩入口
+連結前往 demo/index.html；顏色以檔案後段的首頁配色為準。
+==================================================*/
+
+.hero-play{
     display: inline-block;
     position: relative;
     z-index: 2;
@@ -106,11 +131,11 @@
     text-decoration: none;
 }
 
-.hero-play:hover {
+.hero-play:hover{
     background: #555;
 }
 
-.hero-play:focus-visible {
+.hero-play:focus-visible{
     outline: 3px solid #dfc8ff;
     outline-offset: 4px;
 }
@@ -119,7 +144,7 @@
 公告區域
 ==================================================*/
 
-.news {
+.news{
     padding: 100px 50px;
 
     background-color: #151515;
@@ -144,7 +169,7 @@
 }
 
 .news-list{
-    display:  flex;
+    display: flex;
     gap: 30px;
     width: 100%;
 
@@ -177,7 +202,7 @@
 }
 
 .news-button:hover{
-    background-color:   #555;
+    background-color: #555;
 
     transform: scale(1.1);
 }
@@ -319,11 +344,21 @@
     background: transparent;
 }
 
-@media (max-width: 900px) {
-    .news-card {
+/*==================================================
+公告輪播的平板版
+縮小螢幕時，從三張公告改成一次顯示兩張。
+==================================================*/
+
+@media (max-width: 900px){
+    .news-card{
         flex-basis: calc((100% - 30px) / 2);
     }
 }
+
+/*==================================================
+首頁手機版
+公告一次顯示一張，下載入口改成直向排列。
+==================================================*/
 
 @media (max-width: 600px){
 
@@ -362,29 +397,110 @@
         max-width: 350px;
     }
 
-   
-}
-.hero h1 { margin: 24px 0 12px; }
-.hero > p { max-width: 40em; margin: 0; color: #ded4dc; }
-.hero-play { background: #735375; margin-bottom: 8px; }
-.hero-play:hover { background: #89618c; }
-.news-window { min-width: 0; }
-.news-card { min-width: 0; }
-.news-button { min-width: 44px; min-height: 44px; }
-.download-card { max-width: 100%; }
-.media-toggle { display: block; margin: 10px 0; padding: 8px 12px; min-height: 44px; background: #333; border: 1px solid #888; border-radius: 4px; color: #fff; cursor: pointer; }
-@media (max-width: 600px) { .hero-image { width: 100%; } .hero { padding-top: 104px; } }
-
-/* Keep text readable while the image yields space on short screens. */
-.hero > h1, .hero > p, .hero-play { flex-shrink: 0; }
-@media (max-height: 600px) {
-    .hero { padding: 88px 20px 16px; }
-    .hero h1 { font-size: 24px; margin: 8px 0; }
-    .hero-play { margin-top: 8px; padding: 8px 24px; }
-    .hero-gradient { margin-top: 8px; }
-}
-@media (max-height: 420px) {
-    .hero { height: auto; min-height: 100svh; overflow: visible; }
-    .hero-image { flex: none; height: 40px; }
 }
 
+.hero h1{
+    margin: 24px 0 12px;
+}
+
+.hero>p{
+    max-width: 40em;
+    margin: 0;
+    color: #ded4dc;
+}
+
+.hero-play{
+    background: #735375;
+    margin-bottom: 8px;
+}
+
+.hero-play:hover{
+    background: #89618c;
+}
+
+.news-window{
+    min-width: 0;
+}
+
+.news-card{
+    min-width: 0;
+}
+
+.news-button{
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.download-card{
+    max-width: 100%;
+}
+
+/*==================================================
+公告動畫播放按鈕
+按鈕由 main.js 建立；使用者點擊後才播放影片。
+==================================================*/
+
+.media-toggle{
+    display: block;
+    margin: 10px 0;
+    padding: 8px 12px;
+    min-height: 44px;
+    background: #333;
+    border: 1px solid #888;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 600px){
+    .hero-image{
+        width: 100%;
+    }
+
+    .hero{
+        padding-top: 104px;
+    }
+}
+
+/* 較矮視窗中讓圖片優先縮小，保留文字與按鈕的閱讀空間。 */
+.hero>h1, .hero>p, .hero-play{
+    flex-shrink: 0;
+}
+
+/*==================================================
+較矮視窗的首屏
+縮小標題與間距，讓圖片、提示及試玩入口能保留在首屏內。
+==================================================*/
+
+@media (max-height: 600px){
+    .hero{
+        padding: 88px 20px 16px;
+    }
+
+    .hero h1{
+        font-size: 24px;
+        margin: 8px 0;
+    }
+
+    .hero-play{
+        margin-top: 8px;
+        padding: 8px 24px;
+    }
+
+    .hero-gradient{
+        margin-top: 8px;
+    }
+}
+
+@media (max-height: 420px){
+    .hero{
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+    }
+
+    .hero-image{
+        flex: none;
+        height: 40px;
+    }
+}

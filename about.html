@@ -8,16 +8,18 @@
         <title>遊戲介紹｜長得像學妹的學弟和長得像學長的學姐</title>
         <meta name="description" content="了解《長得像學妹的學弟和長得像學長的學姐》的遊戲特色，體驗結合劇情對話、角色互動與小遊戲的 2D 視覺小說。">
 
+        <!-- 先載入共用樣式，再載入本頁樣式；後載入者可調整相同選擇器。 -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/about.css">
     </head>
 
     <body>
         <a class="skip-link" href="#main-content">跳至主要內容</a>
-        
+
         <!--上方導覽列 -->
+        <!-- 四個頁面共用此導覽結構，main.js 會標記目前頁面並控制手機選單。 -->
         <header>
-            
+
             <!--logo-->
             <div class="logo">
                 <a href="index.html">
@@ -25,11 +27,7 @@
                 </a>
             </div>
 
-            <button class="menu-button" id="menu-button"
-                    type="button"
-                    aria-label="開啟選單"
-                    aria-expanded="false"
-                    aria-controls="main-nav">
+            <button class="menu-button" id="menu-button" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="main-nav">
                 ☰
             </button>
 
@@ -67,6 +65,7 @@
                         透過生動的對話與畫面演出，走進角色們的日常生活，
                         並在故事中的特定時刻親自參與互動，體驗一段充滿意外與趣味的校園故事。
                     </p>
+                    <!-- 遊戲特色標籤與頁內捲動入口。 -->
                     <div class="about-genres"><span>2D 視覺小說</span><span>角色互動</span><span>互動小遊戲</span></div>
                     <a class="about-explore" href="#game-features">探索遊戲特色 <span aria-hidden="true">↓</span></a>
                 </div>
@@ -74,6 +73,7 @@
             </section>
 
             <!--特色-->
+            <!-- 替換特色圖片時同步更新 alt，圖片依原比例呈現。 -->
             <section class="features" id="game-features">
 
                 <!--特色1-->
@@ -117,7 +117,7 @@
             </section>
 
         </main>
-    
+
         <!--頁底-->
         <footer>
 
@@ -140,8 +140,9 @@
 
         </footer>
 
+        <!-- 放在頁面底部，讓互動程式執行前可先取得上方元素。 -->
         <script src="js/main.js"></script>
-        
+
     </body>
 
 </html>

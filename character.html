@@ -8,14 +8,16 @@
         <title>角色介紹｜長得像學妹的學弟和長得像學長的學姐</title>
         <meta name="description" content="認識青、棠與心魔，查看角色立繪、個人資料與性格特色，探索第一印象之外的他們。">
 
+        <!-- 先載入共用樣式，再載入本頁樣式；後載入者可調整相同選擇器。 -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/character.css">
     </head>
 
     <body>
         <a class="skip-link" href="#main-content">跳至主要內容</a>
-        
+
         <!--上方導覽列 -->
+        <!-- 四個頁面共用此導覽結構，main.js 會標記目前頁面並控制手機選單。 -->
         <header>
             <!--logo-->
             <div class="logo">
@@ -24,11 +26,7 @@
                 </a>
             </div>
 
-            <button class="menu-button" id="menu-button"
-                    type="button"
-                    aria-label="開啟選單"
-                    aria-expanded="false"
-                    aria-controls="main-nav">
+            <button class="menu-button" id="menu-button" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="main-nav">
                 ☰
             </button>
 
@@ -50,7 +48,8 @@
                     <h1>MAIN CHARACTERS</h1>
                     <p>主要角色</p>
                 </div>
-                
+
+                <!-- main.js 產生角色按鈕與立繪，資料集中在 characters 陣列。 -->
                 <div class="character-carousel">
 
                     <button id="character-prev" class="character-button" type="button" aria-label="上一位角色">
@@ -72,13 +71,14 @@
                     <span class="character-eyebrow" aria-hidden="true">CHARACTER PROFILE</span>
                     <h2 id="character-name"></h2>
                     <p id="character-description"></p>
+                    <!-- 視覺資料由 character.js 排版；輔助閱讀仍使用上方原始介紹。 -->
                     <dl class="character-facts" id="character-facts" aria-hidden="true"></dl>
                     <div class="character-tags" id="character-tags" aria-hidden="true"></div>
                 </div>
 
             </section>
 
-        <!--
+            <!--
             <section class="side-characters">
 
                 <div class="section-title">
@@ -136,7 +136,7 @@
         -->
 
         </main>
-    
+
         <!--頁底-->
         <footer>
 
@@ -159,9 +159,10 @@
 
         </footer>
 
+        <!-- 放在頁面底部，讓互動程式執行前可先取得上方元素。 -->
         <script src="js/main.js"></script>
         <script src="js/character.js"></script>
-        
+
     </body>
 
 </html>

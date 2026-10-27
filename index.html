@@ -11,14 +11,16 @@
         <meta name="description" content="一場認錯身分的相遇，展開意想不到的校園日常。認識角色、探索故事，立即試玩結合角色互動與小遊戲的 2D 視覺小說。">
 
         <!--導入css-->
+        <!-- 先載入共用樣式，再載入本頁樣式；後載入者可調整相同選擇器。 -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/index.css">
     </head>
 
     <body>
         <a class="skip-link" href="#main-content">跳至主要內容</a>
-        
+
         <!--上方導覽列 -->
+        <!-- 四個頁面共用此導覽結構，main.js 會標記目前頁面並控制手機選單。 -->
         <header>
             <!--logo-->
             <div class="logo">
@@ -28,11 +30,7 @@
             </div>
 
             <!--漢堡選單按鈕-->
-            <button class="menu-button" id="menu-button"
-                    type="button"
-                    aria-label="開啟選單"
-                    aria-expanded="false"
-                    aria-controls="main-nav">
+            <button class="menu-button" id="menu-button" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="main-nav">
                 ☰
             </button>
 
@@ -56,12 +54,13 @@
                     <img src="./images/home/hero-img.png" alt="遊戲主視覺" fetchpriority="high">
                 </div>
 
+                <!-- 提示位於圖片下方，可點擊平滑下滑至 home-news。 -->
                 <div class="hero-gradient" id="hero-gradient">
                     <a class="scroll-hint" id="scroll-hint" href="#home-news">
                         <p>下滑查看更多</p>
                         <span aria-hidden="true">↓</span>
                     </a>
-                </div>                
+                </div>
 
                 <h1>
                     長得像學妹的學弟<br>
@@ -83,6 +82,7 @@
                 </div>
 
                 <!--公告顯示-->
+                <!-- main.js 會依卡片寬度計算切換距離，手機與電腦共用同一份公告。 -->
                 <div class="news-carousel">
 
                     <!--左按鈕-->
@@ -96,7 +96,6 @@
                         <div class="news-list">
 
 
-
                             <article class="news-card">
 
                                 <div class="image-placeholder">
@@ -108,9 +107,9 @@
                                 <h3>角色「棠」遊戲內動畫完成</h3>
 
                                 <p class="news-date">2026.10.18</p>
-                                
+
                             </article>
-                            
+
                             <article class="news-card">
 
                                 <div class="image-placeholder">
@@ -120,7 +119,7 @@
                                 <h3>角色「青」立繪及人設完成</h3>
 
                                 <p class="news-date">2026.10.15</p>
-                                
+
                             </article>
 
                             <article class="news-card">
@@ -132,7 +131,7 @@
                                 <h3>角色「棠」立繪優化</h3>
 
                                 <p class="news-date">2026.10.14</p>
-                                
+
                             </article>
 
 
@@ -140,7 +139,7 @@
                             <article class="news-card">
 
                                 <div class="image-placeholder">
-                                    <img src="./images/home/202610021.jpg" alt="棠的配音確認公告" loading="lazy" decoding="async">                               
+                                    <img src="./images/home/202610021.jpg" alt="棠的配音確認公告" loading="lazy" decoding="async">
                                 </div>
 
                                 <h3>角色「棠」CV已經確認</h3>
@@ -183,7 +182,7 @@
                     </button>
 
                 </div>
-                
+
             </section>
 
             <!--下載-->
@@ -192,7 +191,7 @@
                 <!--下載內容-->
                 <div class="download-list">
 
-                <!--
+                    <!--
                     <a class="download-card" href="#" target="_blank" rel="noopener noreferrer">
 
                         <div class="download-icon">
@@ -229,7 +228,7 @@
                     </a>
 
                 </div>
-                
+
             </section>
 
         </main>
@@ -258,10 +257,9 @@
         </footer>
 
         <!--導入js-->
+        <!-- 放在頁面底部，讓互動程式執行前可先取得上方元素。 -->
         <script src="js/main.js"></script>
-    
+
     </body>
 
 </html>
-
-<!--test-->

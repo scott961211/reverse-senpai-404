@@ -8,14 +8,16 @@
         <title>世界觀｜長得像學妹的學弟和長得像學長的學姐</title><!--這裡中間會是分頁上方的字-->
         <meta name="description" content="從酒吧裡的一場誤會開始，走進《長得像學妹的學弟和長得像學長的學姐》的故事，探索青、棠與癒的日常、關心與界線，體驗 404demo 劇情片段。">
 
+        <!-- 先載入共用樣式，再載入本頁樣式；後載入者可調整相同選擇器。 -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/story.css">
     </head>
 
     <body class="world-body">
         <a class="skip-link" href="#main-content">跳至主要內容</a>
-        
+
         <!--上方導覽列 -->
+        <!-- 四個頁面共用此導覽結構，main.js 會標記目前頁面並控制手機選單。 -->
         <header>
             <!--logo-->
             <div class="logo">
@@ -24,11 +26,7 @@
                 </a>
             </div>
 
-            <button class="menu-button" id="menu-button"
-                    type="button"
-                    aria-label="開啟選單"
-                    aria-expanded="false"
-                    aria-controls="main-nav">
+            <button class="menu-button" id="menu-button" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="main-nav">
                 ☰
             </button>
 
@@ -40,7 +38,7 @@
             </nav>
 
         </header>
-    
+
         <!-- 依既有企劃整理，保留後續主線與結局。 -->
         <main id="main-content" tabindex="-1" class="world-page">
             <section class="world-opening" aria-labelledby="world-title">
@@ -79,38 +77,55 @@
                 </div>
             </section>
 
+            <!-- 依已確認企劃介紹日常舞臺與人物關係，保留故事後段轉折。 -->
             <section class="world-setting" aria-labelledby="setting-title">
                 <p class="world-label">EVERYDAY / 他們生活的世界</p>
                 <h2 id="setting-title">從認識一個人，到學會與他相處。</h2>
                 <div class="world-setting-grid">
-                    <article><span>01 / 日常的舞臺</span><h3>課堂之外，還有生活。</h3><p>大學、宿舍與酒吧，串起青與棠的生活。課表、工作與朋友的邀約，讓他們在不同場合再次碰面，也逐漸看見彼此的另一面。</p></article>
-                    <article><span>02 / 朋友的距離</span><h3>互嗆，也會認真在意。</h3><p>青與室友癒總有說不完的玩笑；與棠的關係，則從朋友開始慢慢靠近。故事的重心，是這些日常如何累積成信任與在意。</p></article>
-                    <article><span>03 / 關心的界線</span><h3>想照顧，也想被信任。</h3><p>青希望成為能讓人依靠的人，棠卻習慣先把事情扛下來。兩個都在乎對方的人，仍要學著詢問、傾聽，並把真正的感受說出口。</p></article>
+                    <article><span>01 / 日常的舞臺</span>
+                        <h3>課堂之外，還有生活。</h3>
+                        <p>大學、宿舍與酒吧，串起青與棠的生活。課表、工作與朋友的邀約，讓他們在不同場合再次碰面，也逐漸看見彼此的另一面。</p>
+                    </article>
+                    <article><span>02 / 朋友的距離</span>
+                        <h3>互嗆，也會認真在意。</h3>
+                        <p>青與室友癒總有說不完的玩笑；與棠的關係，則從朋友開始慢慢靠近。故事的重心，是這些日常如何累積成信任與在意。</p>
+                    </article>
+                    <article><span>03 / 關心的界線</span>
+                        <h3>想照顧，也想被信任。</h3>
+                        <p>青希望成為能讓人依靠的人，棠卻習慣先把事情扛下來。兩個都在乎對方的人，仍要學著詢問、傾聽，並把真正的感受說出口。</p>
+                    </article>
                 </div>
             </section>
 
             <section class="world-scene" id="world-demo" aria-labelledby="scene-title">
-                <div class="world-scene-heading"><p class="world-label">404DEMO / 劇情節錄</p><h2 id="scene-title">離開之前……</h2></div>
+                <div class="world-scene-heading">
+                    <p class="world-label">404DEMO / 劇情節錄</p>
+                    <h2 id="scene-title">離開之前……</h2>
+                </div>
                 <div class="world-scene-stage">
+                    <!-- 背景、角色與對話一起漸淡；試玩按鈕位於下一層，不受淡出影響。 -->
                     <div class="world-scene-content" id="world-scene-content">
-                    <div class="world-scene-visual" role="img" aria-label="房間裡，害羞的青與棠交談">
-                        <img class="world-scene-background" src="images/story-demo/room.webp" alt="" loading="lazy" decoding="async">
-                        <img class="world-scene-character world-scene-qing" src="images/story-demo/c-shy.webp" alt="" loading="lazy" decoding="async">
-                        <img class="world-scene-character world-scene-tang" src="images/story-demo/t-nom.webp" alt="" loading="lazy" decoding="async">
-                    </div>
-                    <div class="world-dialogue">
-                        <p class="world-speaker" id="world-speaker">青</p>
-                        <!-- 畫面逐字顯示；輔助閱讀只播報完整句子。 -->
-                        <p class="world-dialogue-text" id="world-dialogue-text" aria-hidden="true">我先走了。</p>
-                        <p class="world-sr-only" id="world-dialogue-accessible" aria-live="polite" aria-atomic="true">青：我先走了。</p>
-                        <div class="world-dialogue-controls">
-                            <span id="world-dialogue-count">1 / 5</span>
-                            <button type="button" id="world-dialogue-restart" hidden>重新閱讀</button>
-                            <button type="button" id="world-dialogue-next" hidden>顯示全文</button>
+                        <div class="world-scene-visual" role="img" aria-label="房間裡，害羞的青與棠交談">
+                            <img class="world-scene-background" src="images/story-demo/room.webp" alt="" loading="lazy" decoding="async">
+                            <img class="world-scene-character world-scene-qing" src="images/story-demo/c-shy.webp" alt="" loading="lazy" decoding="async">
+                            <img class="world-scene-character world-scene-tang" src="images/story-demo/t-nom.webp" alt="" loading="lazy" decoding="async">
                         </div>
-                        <noscript><p>啟用 JavaScript 即可體驗互動對話。</p></noscript>
+                        <div class="world-dialogue">
+                            <p class="world-speaker" id="world-speaker">青</p>
+                            <!-- 畫面逐字顯示；輔助閱讀只播報完整句子。 -->
+                            <p class="world-dialogue-text" id="world-dialogue-text" aria-hidden="true">我先走了。</p>
+                            <p class="world-sr-only" id="world-dialogue-accessible" aria-live="polite" aria-atomic="true">青：我先走了。</p>
+                            <div class="world-dialogue-controls">
+                                <span id="world-dialogue-count">1 / 5</span>
+                                <button type="button" id="world-dialogue-restart" hidden>重新閱讀</button>
+                                <button type="button" id="world-dialogue-next" hidden>顯示全文</button>
+                            </div>
+                            <noscript>
+                                <p>啟用 JavaScript 即可體驗互動對話。</p>
+                            </noscript>
+                        </div>
                     </div>
-                    </div>
+                    <!-- 結尾先隱藏，最後一句完成後由 story.js 顯示。 -->
                     <div class="world-scene-finale" id="world-scene-finale" hidden>
                         <a class="world-scene-play" href="./demo/index.html">立即試玩</a>
                         <button type="button" id="world-scene-replay">重新閱讀</button>
@@ -141,16 +156,17 @@
                     <br>
                     ig
                 </a>
-                
+
             </div>
 
             <p> 長得像學妹的學弟和長得像學長的學姐 </p>
 
         </footer>
 
+        <!-- 放在頁面底部，讓互動程式執行前可先取得上方元素。 -->
         <script src="js/main.js"></script>
         <script src="js/story.js"></script>
-        
+
     </body>
 
 </html>

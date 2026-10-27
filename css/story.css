@@ -1,130 +1,761 @@
 /* 僅作用於世界觀頁面，保留網站共用導覽、頁尾與手機選單。 */
-body.world-body { background: #141113; color: #eee; }
-.world-page { --world-muted: #b2b3b8; --world-line: #44464d; font-family: "Microsoft JhengHei", sans-serif; }
-.world-page *, .world-page *::before, .world-page *::after { box-sizing: border-box; }
-.world-page h1, .world-page h2, .world-page p { margin: 0; }
-.world-label { font-size: 12px; letter-spacing: .18em; color: var(--world-muted); line-height: 1.8; }
-.world-opening { min-height: 100vh; min-height: 100svh; padding: 140px 8vw 70px; position: relative; display: flex; align-items: center; isolation: isolate; }
-.world-opening-image { position: absolute; inset: 80px 0 0; background: #343539; z-index: -1; }
-.world-opening-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #111214e8, #11121455), linear-gradient(0deg, #111214, transparent 50%); }
-.world-opening-image span { position: absolute; right: 5%; top: 10%; color: #a8a8ac; font-size: 12px; }
-.world-opening-copy { max-width: 800px; }
-.world-opening h1 { font-size: clamp(36px, 5.5vw, 76px); font-weight: 500; line-height: 1.35; letter-spacing: .03em; margin: 24px 0; }
-.world-opening-copy > p:not(.world-label) { color: #ccc; line-height: 2; }
-.world-link { display: inline-flex; align-items: center; gap: 45px; color: #eee; border-bottom: 1px solid #aaa; padding: 16px 0; margin-top: 30px; text-decoration: none; transition: color .2s; }
-.world-link:hover { color: #c7b8da; }
-.world-page a:focus-visible, .world-page button:focus-visible { outline: 2px solid #dfc8ff; outline-offset: 6px; }
-.world-chapter { max-width: 1280px; margin: auto; padding: 100px 6%; display: grid; grid-template-columns: 1.15fr 1fr; gap: 8%; align-items: center; scroll-margin-top: 100px; }
-.world-placeholder { background: #333438; border: none; aspect-ratio: 4 / 3; display: grid; place-items: center; color: #b9bac0; font-size: 13px; letter-spacing: .12em; }
-.world-copy h2, .world-scene h2, .world-ending h2 { font-size: clamp(26px, 3vw, 40px); line-height: 1.5; font-weight: 500; margin: 20px 0 26px; }
-.world-copy > p:not(.world-label) { color: var(--world-muted); line-height: 2; margin-top: 16px; }
-.world-chapter-reverse { grid-template-columns: 1fr 1.15fr; }
-.world-chapter-reverse .world-placeholder { grid-column: 2; grid-row: 1; }
-.world-chapter-reverse .world-copy { grid-column: 1; grid-row: 1; }
-.world-scene { max-width: 1280px; margin: auto; padding: 70px 6% 100px; }
-.world-scene-heading { text-align: center; margin-bottom: 40px; }
-.world-scene-stage { position: relative; background: #303136; border: none; padding: clamp(18px, 4vw, 50px); }
-.world-scene-placeholder { height: 220px; display: grid; place-items: center; color: #a4a5ab; font-size: 13px; }
-.world-dialogue { padding: 16px 24px; background: #131419ee; border: 1px solid #63616d; }
-.world-speaker { display: inline-block; padding-bottom: 6px; color: #d9c9e6; letter-spacing: .1em; }
-.world-dialogue-text { min-height: 40px; line-height: 1.7; font-size: 18px; overflow-wrap: anywhere; }
-.world-dialogue-controls { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 8px; }
-.world-dialogue-controls span { margin-right: auto; color: #9c9ca6; font-size: 12px; }
-.world-dialogue-controls button { border: 1px solid #77727f; background: transparent; color: #eee; min-height: 44px; padding: 6px 14px; cursor: pointer; font: inherit; }
-.world-dialogue-controls button:hover { background: #36313f; }
-.world-dialogue-controls button:disabled { opacity: .5; cursor: default; }
-.world-dialogue-controls [hidden] { display: none; }
-.world-ending { text-align: center; padding: 90px 24px 130px; border-top: 1px solid #2c2d33; }
-.world-ending > p:not(.world-label) { color: var(--world-muted); line-height: 1.8; }
-.world-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-/* 手機將交錯圖文改成直向閱讀。 */
-@media (max-width: 700px) {
-    .world-opening { padding: 130px 24px 60px; }
-    .world-chapter, .world-chapter-reverse { display: flex; flex-direction: column; gap: 30px; padding: 50px 24px; }
-    .world-placeholder, .world-copy { width: 100%; }
-    .world-scene { padding: 50px 24px; }
-    .world-scene-placeholder { height: 160px; text-align: center; }
-    .world-dialogue { padding: 12px 16px; }
-    .world-dialogue-text { min-height: 56px; font-size: 16px; }
+body.world-body{
+    background: #141113;
+    color: #eee;
 }
-@media (prefers-reduced-motion: reduce) { .world-page * { transition: none; } }
+
+.world-page{
+    --world-muted: #b2b3b8;
+    --world-line: #44464d;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+.world-page *, .world-page *::before, .world-page *::after{
+    box-sizing: border-box;
+}
+
+.world-page h1, .world-page h2, .world-page p{
+    margin: 0;
+}
+
+.world-label{
+    font-size: 12px;
+    letter-spacing: .18em;
+    color: var(--world-muted);
+    line-height: 1.8;
+}
+
+/*==================================================
+世界觀開場
+固定導覽列下方的大標題與背景層，漸層用來保持文字清晰。
+==================================================*/
+
+.world-opening{
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 140px 8vw 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    isolation: isolate;
+}
+
+.world-opening-image{
+    position: absolute;
+    inset: 80px 0 0;
+    background: #343539;
+    z-index: -1;
+}
+
+.world-opening-image::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #111214e8, #11121455), linear-gradient(0deg, #111214, transparent 50%);
+}
+
+.world-opening-image span{
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    color: #a8a8ac;
+    font-size: 12px;
+}
+
+.world-opening-copy{
+    max-width: 800px;
+}
+
+.world-opening h1{
+    font-size: clamp(36px, 5.5vw, 76px);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: .03em;
+    margin: 24px 0;
+}
+
+.world-opening-copy>p:not(.world-label){
+    color: #ccc;
+    line-height: 2;
+}
+
+.world-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 45px;
+    color: #eee;
+    border-bottom: 1px solid #aaa;
+    padding: 16px 0;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.world-link:hover{
+    color: #c7b8da;
+}
+
+.world-page a:focus-visible, .world-page button:focus-visible{
+    outline: 2px solid #dfc8ff;
+    outline-offset: 6px;
+}
+
+/*==================================================
+世界觀章節
+01 與 02 的圖片、標題與敘述；第二段使用反向排列。
+==================================================*/
+
+.world-chapter{
+    max-width: 1280px;
+    margin: auto;
+    padding: 100px 6%;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 8%;
+    align-items: center;
+    scroll-margin-top: 100px;
+}
+
+.world-placeholder{
+    background: #333438;
+    border: none;
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    color: #b9bac0;
+    font-size: 13px;
+    letter-spacing: .12em;
+}
+
+.world-copy h2, .world-scene h2, .world-ending h2{
+    font-size: clamp(26px, 3vw, 40px);
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 20px 0 26px;
+}
+
+.world-copy>p:not(.world-label){
+    color: var(--world-muted);
+    line-height: 2;
+    margin-top: 16px;
+}
+
+.world-chapter-reverse{
+    grid-template-columns: 1fr 1.15fr;
+}
+
+.world-chapter-reverse .world-placeholder{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.world-chapter-reverse .world-copy{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/*==================================================
+互動小劇場
+背景、角色與對話框共用同一個舞臺，結尾可整體漸淡。
+==================================================*/
+
+.world-scene{
+    max-width: 1280px;
+    margin: auto;
+    padding: 70px 6% 100px;
+}
+
+.world-scene-heading{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.world-scene-stage{
+    position: relative;
+    background: #303136;
+    border: none;
+    padding: clamp(18px, 4vw, 50px);
+}
+
+.world-scene-placeholder{
+    height: 220px;
+    display: grid;
+    place-items: center;
+    color: #a4a5ab;
+    font-size: 13px;
+}
+
+/*==================================================
+小劇場對話框
+保留較矮的對話框與至少 44px 的操作按鈕高度。
+==================================================*/
+
+.world-dialogue{
+    padding: 16px 24px;
+    background: #131419ee;
+    border: 1px solid #63616d;
+}
+
+.world-speaker{
+    display: inline-block;
+    padding-bottom: 6px;
+    color: #d9c9e6;
+    letter-spacing: .1em;
+}
+
+.world-dialogue-text{
+    min-height: 40px;
+    line-height: 1.7;
+    font-size: 18px;
+    overflow-wrap: anywhere;
+}
+
+.world-dialogue-controls{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.world-dialogue-controls span{
+    margin-right: auto;
+    color: #9c9ca6;
+    font-size: 12px;
+}
+
+.world-dialogue-controls button{
+    border: 1px solid #77727f;
+    background: transparent;
+    color: #eee;
+    min-height: 44px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.world-dialogue-controls button:hover{
+    background: #36313f;
+}
+
+.world-dialogue-controls button:disabled{
+    opacity: .5;
+    cursor: default;
+}
+
+.world-dialogue-controls [hidden]{
+    display: none;
+}
+
+.world-ending{
+    text-align: center;
+    padding: 90px 24px 130px;
+    border-top: 1px solid #2c2d33;
+}
+
+.world-ending>p:not(.world-label){
+    color: var(--world-muted);
+    line-height: 1.8;
+}
+
+.world-sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* 手機將交錯圖文改成直向閱讀。 */
+@media (max-width: 700px){
+    .world-opening{
+        padding: 130px 24px 60px;
+    }
+
+    .world-chapter, .world-chapter-reverse{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 50px 24px;
+    }
+
+    .world-placeholder, .world-copy{
+        width: 100%;
+    }
+
+    .world-scene{
+        padding: 50px 24px;
+    }
+
+    .world-scene-placeholder{
+        height: 160px;
+        text-align: center;
+    }
+
+    .world-dialogue{
+        padding: 12px 16px;
+    }
+
+    .world-dialogue-text{
+        min-height: 56px;
+        font-size: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .world-page *{
+        transition: none;
+    }
+}
 
 /* 404demo 原始場景與角色立繪。 */
-.world-scene-visual { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #141113; }
-.world-scene-background { display: block; width: 100%; height: 100%; object-fit: cover; }
-.world-scene-visual .world-scene-character { position: absolute; bottom: 0; height: 94%; width: auto; max-width: none; object-fit: contain; }
-.world-scene-qing { left: 20%; transform: translateX(-50%); }
-.world-scene-tang { left: 80%; transform: translateX(-50%); }
 
-.world-scene-content { transition: opacity .8s ease; }
-.world-scene-stage.is-complete .world-scene-content { opacity: .12; pointer-events: none; }
-.world-scene-finale { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; opacity: 0; transition: opacity .8s ease; }
-.world-scene-finale[hidden] { display: none; }
-.world-scene-stage.is-complete .world-scene-finale { opacity: 1; }
-.world-scene-play { display: inline-block; padding: 16px 40px; border-radius: 8px; background: #735375; color: #fff; font-size: clamp(20px, 3vw, 28px); font-weight: bold; text-decoration: none; }
-.world-scene-play:hover { background: #89618c; }
-#world-scene-replay { padding: 8px 16px; min-height: 44px; border: 0; background: transparent; color: #eee; font: inherit; text-decoration: underline; cursor: pointer; }
+/*==================================================
+demo 場景與立繪
+背景採 16:9；青在左側、棠在右側，圖片不額外加邊框。
+==================================================*/
 
-/* Story chapters: artwork and a continuous dark palette. */
-body.world-body { background: #17151b; }
-.world-page { --world-muted: #bbb0c3; --world-line: #4c3d55; background: radial-gradient(ellipse at 15% 46%, #35243a55, transparent 38%), #17151b; }
-.world-opening { min-height: min(760px, 100svh); padding: 160px max(6vw, 24px) 88px; }
-.world-opening-image { background: url('../images/story-demo/room.webp') center 52% / cover; }
-.world-opening-image::after { background: linear-gradient(90deg, #17121bee 5%, #17121b99 65%, #17121b44), linear-gradient(0deg, #17151b, transparent 55%); }
-.world-opening-copy { max-width: 1120px; width: 100%; margin: auto; }
-.world-opening h1 { font-size: clamp(36px, 4.8vw, 66px); line-height: 1.5; letter-spacing: .06em; text-shadow: 0 4px 30px #100915; }
-.world-opening-copy > p:not(.world-label) { color: #d4c9db; font-size: 17px; }
-.world-label { color: #c5a5d7; font-size: 11px; letter-spacing: .22em; }
-.world-link { border: 0; gap: 28px; color: #e2c8ef; }
-.world-link span { transition: transform .2s; }
-.world-link:hover span { transform: translateX(4px); }
-.world-chapter { max-width: 1240px; padding: 72px 48px; gap: 9%; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.world-copy { min-width: 0; }
-.world-copy h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.6; margin: 16px 0 22px; color: #f1e7f6; }
-.world-copy > p:not(.world-label) { font-size: 16px; line-height: 2.1; }
-.world-placeholder { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 24px 50px #0b071340; }
-.world-placeholder > span { position: absolute; left: 24px; right: 24px; bottom: 22px; z-index: 2; color: #f3e6f9; font-size: 11px; letter-spacing: .16em; }
-.world-artwork { aspect-ratio: 5 / 4; background: #30212e; }
-.world-artwork img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 65%; }
-.world-artwork::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, #221625aa); }
-.world-pair { aspect-ratio: 5 / 4; background: radial-gradient(ellipse at 25% 65%, #654b7955, transparent 65%), radial-gradient(ellipse at 80% 45%, #48637d55, transparent 65%), #211c29; }
-.world-pair img { position: absolute; bottom: 0; height: 94%; width: auto; max-width: none; }
-.world-pair-qing { left: 28%; transform: translateX(-50%); }
-.world-pair-tang { left: 73%; transform: translateX(-50%); }
-.world-pair::after { content: ""; position: absolute; inset: 65% 0 0; background: linear-gradient(transparent, #211c29); }
-.world-scene { max-width: 1240px; padding: 72px 48px 88px; scroll-margin-top: 90px; }
-.world-scene-heading { margin-bottom: 28px; }
-.world-scene-heading h2 { margin: 12px 0 0; font-size: clamp(28px, 3vw, 40px); }
-.world-scene-stage { padding: 0; border-radius: 16px; overflow: hidden; background: #17121d; box-shadow: 0 24px 70px #07050c66; }
-.world-dialogue { border: 0; background: #1d1824; }
-.world-speaker { color: #dab8ed; }
-.world-dialogue-controls button { border-color: #6d577b; border-radius: 6px; }
-.world-scene-play { background: #806086; box-shadow: 0 12px 36px #09040f66; }
-.world-ending { padding: 72px 24px 88px; border: 0; background: radial-gradient(ellipse at 50% 100%, #422a4b55, transparent 70%); }
-.world-ending h2 { color: #ede1f3; font-size: clamp(26px, 3vw, 36px); margin: 16px 0; }
-.world-setting { max-width: 1240px; margin: auto; padding: 48px 48px 56px; }
-.world-setting > h2 { margin: 14px 0 32px; font-size: clamp(25px, 3vw, 36px); font-weight: 500; line-height: 1.6; color: #f1e7f6; }
-.world-setting-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
-.world-setting-grid article { min-width: 0; padding: 24px; background: #ffffff04; border-radius: 14px; }
-.world-setting-grid span { font-size: 11px; color: #c5a5d7; letter-spacing: .1em; }
-.world-setting-grid h3 { margin: 14px 0; font-weight: 500; font-size: 20px; line-height: 1.7; }
-.world-setting-grid p { color: var(--world-muted); font-size: 15px; line-height: 2; }
-@media (max-width: 900px) { .world-setting-grid { grid-template-columns: 1fr; gap: 16px; } }
-@media (max-width: 700px) { .world-setting { padding: 32px 24px 40px; } .world-setting-grid article { padding: 22px; } }
-@media (max-width: 700px) {
-    .world-opening { min-height: min(680px, 100svh); padding: 136px 24px 64px; }
-    .world-opening h1 { font-size: clamp(30px, 8vw, 42px); letter-spacing: .02em; }
-    .world-opening-copy > p:not(.world-label) { font-size: 16px; }
-    .world-opening-image::after { background: linear-gradient(90deg, #17121be8, #17121b99), linear-gradient(0deg, #17151b, transparent 60%); }
-    .world-chapter, .world-chapter-reverse { padding: 40px 24px; gap: 26px; }
-    .world-copy h2 { font-size: 27px; }
-    .world-placeholder { border-radius: 12px; }
-    .world-scene { padding: 48px 24px 56px; }
-    .world-scene-stage { border-radius: 12px; }
-    .world-ending { padding: 48px 24px 64px; }
+.world-scene-visual{
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #141113;
 }
 
-/* The chapter 02 illustration keeps its original proportions. */
-.world-encounter { display: block; aspect-ratio: auto; background: transparent; }
-.world-encounter img { display: block; width: 100%; height: auto; }
-.world-encounter::after { content: ""; position: absolute; inset: 70% 0 0; background: linear-gradient(transparent, #211c2988); pointer-events: none; }
+.world-scene-background{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.world-scene-visual .world-scene-character{
+    position: absolute;
+    bottom: 0;
+    height: 94%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+}
+
+.world-scene-qing{
+    left: 20%;
+    transform: translateX(-50%);
+}
+
+.world-scene-tang{
+    left: 80%;
+    transform: translateX(-50%);
+}
+
+/*==================================================
+劇場結尾與試玩入口
+story.js 加上 is-complete 後淡出內容，中央顯示立即試玩與重新閱讀。
+==================================================*/
+
+.world-scene-content{
+    transition: opacity .8s ease;
+}
+
+.world-scene-stage.is-complete .world-scene-content{
+    opacity: .12;
+    pointer-events: none;
+}
+
+.world-scene-finale{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    opacity: 0;
+    transition: opacity .8s ease;
+}
+
+.world-scene-finale[hidden]{
+    display: none;
+}
+
+.world-scene-stage.is-complete .world-scene-finale{
+    opacity: 1;
+}
+
+.world-scene-play{
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 8px;
+    background: #735375;
+    color: #fff;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.world-scene-play:hover{
+    background: #89618c;
+}
+
+#world-scene-replay{
+    padding: 8px 16px;
+    min-height: 44px;
+    border: 0;
+    background: transparent;
+    color: #eee;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* 世界觀章節使用插畫與連續的深色背景，以下為目前採用的配色。 */
+body.world-body{
+    background: #17151b;
+}
+
+.world-page{
+    --world-muted: #bbb0c3;
+    --world-line: #4c3d55;
+    background: radial-gradient(ellipse at 15% 46%, #35243a55, transparent 38%), #17151b;
+}
+
+.world-opening{
+    min-height: min(760px, 100svh);
+    padding: 160px max(6vw, 24px) 88px;
+}
+
+.world-opening-image{
+    background: url('../images/story-demo/room.webp') center 52% / cover;
+}
+
+.world-opening-image::after{
+    background: linear-gradient(90deg, #17121bee 5%, #17121b99 65%, #17121b44), linear-gradient(0deg, #17151b, transparent 55%);
+}
+
+.world-opening-copy{
+    max-width: 1120px;
+    width: 100%;
+    margin: auto;
+}
+
+.world-opening h1{
+    font-size: clamp(36px, 4.8vw, 66px);
+    line-height: 1.5;
+    letter-spacing: .06em;
+    text-shadow: 0 4px 30px #100915;
+}
+
+.world-opening-copy>p:not(.world-label){
+    color: #d4c9db;
+    font-size: 17px;
+}
+
+.world-label{
+    color: #c5a5d7;
+    font-size: 11px;
+    letter-spacing: .22em;
+}
+
+.world-link{
+    border: 0;
+    gap: 28px;
+    color: #e2c8ef;
+}
+
+.world-link span{
+    transition: transform .2s;
+}
+
+.world-link:hover span{
+    transform: translateX(4px);
+}
+
+.world-chapter{
+    max-width: 1240px;
+    padding: 72px 48px;
+    gap: 9%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.world-copy{
+    min-width: 0;
+}
+
+.world-copy h2{
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.6;
+    margin: 16px 0 22px;
+    color: #f1e7f6;
+}
+
+.world-copy>p:not(.world-label){
+    font-size: 16px;
+    line-height: 2.1;
+}
+
+.world-placeholder{
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 24px 50px #0b071340;
+}
+
+.world-placeholder>span{
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 22px;
+    z-index: 2;
+    color: #f3e6f9;
+    font-size: 11px;
+    letter-spacing: .16em;
+}
+
+.world-artwork{
+    aspect-ratio: 5 / 4;
+    background: #30212e;
+}
+
+.world-artwork img{
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 65%;
+}
+
+.world-artwork::after{
+    content: "";
+    position: absolute;
+    inset: 55% 0 0;
+    background: linear-gradient(transparent, #221625aa);
+}
+
+.world-pair{
+    aspect-ratio: 5 / 4;
+    background: radial-gradient(ellipse at 25% 65%, #654b7955, transparent 65%), radial-gradient(ellipse at 80% 45%, #48637d55, transparent 65%), #211c29;
+}
+
+.world-pair img{
+    position: absolute;
+    bottom: 0;
+    height: 94%;
+    width: auto;
+    max-width: none;
+}
+
+.world-pair-qing{
+    left: 28%;
+    transform: translateX(-50%);
+}
+
+.world-pair-tang{
+    left: 73%;
+    transform: translateX(-50%);
+}
+
+.world-pair::after{
+    content: "";
+    position: absolute;
+    inset: 65% 0 0;
+    background: linear-gradient(transparent, #211c29);
+}
+
+.world-scene{
+    max-width: 1240px;
+    padding: 72px 48px 88px;
+    scroll-margin-top: 90px;
+}
+
+.world-scene-heading{
+    margin-bottom: 28px;
+}
+
+.world-scene-heading h2{
+    margin: 12px 0 0;
+    font-size: clamp(28px, 3vw, 40px);
+}
+
+.world-scene-stage{
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #17121d;
+    box-shadow: 0 24px 70px #07050c66;
+}
+
+.world-dialogue{
+    border: 0;
+    background: #1d1824;
+}
+
+.world-speaker{
+    color: #dab8ed;
+}
+
+.world-dialogue-controls button{
+    border-color: #6d577b;
+    border-radius: 6px;
+}
+
+.world-scene-play{
+    background: #806086;
+    box-shadow: 0 12px 36px #09040f66;
+}
+
+.world-ending{
+    padding: 72px 24px 88px;
+    border: 0;
+    background: radial-gradient(ellipse at 50% 100%, #422a4b55, transparent 70%);
+}
+
+.world-ending h2{
+    color: #ede1f3;
+    font-size: clamp(26px, 3vw, 36px);
+    margin: 16px 0;
+}
+
+/*==================================================
+企劃設定補充
+介紹生活場景、朋友關係與關心的界線，未公開主線轉折與結局。
+==================================================*/
+
+.world-setting{
+    max-width: 1240px;
+    margin: auto;
+    padding: 48px 48px 56px;
+}
+
+.world-setting>h2{
+    margin: 14px 0 32px;
+    font-size: clamp(25px, 3vw, 36px);
+    font-weight: 500;
+    line-height: 1.6;
+    color: #f1e7f6;
+}
+
+.world-setting-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.world-setting-grid article{
+    min-width: 0;
+    padding: 24px;
+    background: #ffffff04;
+    border-radius: 14px;
+}
+
+.world-setting-grid span{
+    font-size: 11px;
+    color: #c5a5d7;
+    letter-spacing: .1em;
+}
+
+.world-setting-grid h3{
+    margin: 14px 0;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.world-setting-grid p{
+    color: var(--world-muted);
+    font-size: 15px;
+    line-height: 2;
+}
+
+@media (max-width: 900px){
+    .world-setting-grid{
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 700px){
+    .world-setting{
+        padding: 32px 24px 40px;
+    }
+
+    .world-setting-grid article{
+        padding: 22px;
+    }
+}
+
+@media (max-width: 700px){
+    .world-opening{
+        min-height: min(680px, 100svh);
+        padding: 136px 24px 64px;
+    }
+
+    .world-opening h1{
+        font-size: clamp(30px, 8vw, 42px);
+        letter-spacing: .02em;
+    }
+
+    .world-opening-copy>p:not(.world-label){
+        font-size: 16px;
+    }
+
+    .world-opening-image::after{
+        background: linear-gradient(90deg, #17121be8, #17121b99), linear-gradient(0deg, #17151b, transparent 60%);
+    }
+
+    .world-chapter, .world-chapter-reverse{
+        padding: 40px 24px;
+        gap: 26px;
+    }
+
+    .world-copy h2{
+        font-size: 27px;
+    }
+
+    .world-placeholder{
+        border-radius: 12px;
+    }
+
+    .world-scene{
+        padding: 48px 24px 56px;
+    }
+
+    .world-scene-stage{
+        border-radius: 12px;
+    }
+
+    .world-ending{
+        padding: 48px 24px 64px;
+    }
+}
+
+/* 世界觀 02 插畫保留原始比例。 */
+
+/*==================================================
+02 新增插畫
+encounter.webp 保留原始比例，底部漸層只用於襯托圖片說明。
+==================================================*/
+
+.world-encounter{
+    display: block;
+    aspect-ratio: auto;
+    background: transparent;
+}
+
+.world-encounter img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.world-encounter::after{
+    content: "";
+    position: absolute;
+    inset: 70% 0 0;
+    background: linear-gradient(transparent, #211c2988);
+    pointer-events: none;
+}
