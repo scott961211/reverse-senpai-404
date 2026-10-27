@@ -123,3 +123,8 @@ body.world-body { background: #17151b; }
     .world-scene-stage { border-radius: 12px; }
     .world-ending { padding: 48px 24px 64px; }
 }
+
+/* The chapter 02 illustration keeps its original proportions. */
+.world-encounter { display: block; aspect-ratio: auto; background: transparent; }
+.world-encounter img { display: block; width: 100%; height: auto; }
+.world-encounter::after { content: ""; position: absolute; inset: 70% 0 0; background: linear-gradient(transparent, #211c2988); pointer-events: none; }
